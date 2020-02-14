@@ -1,3 +1,4 @@
+<h1>AI-visualizer in Tkinter</h1>
 This is a project I did on the side during an AI-course.
 
 I wanted to visualize different Reinforcement Learning algorithms.
