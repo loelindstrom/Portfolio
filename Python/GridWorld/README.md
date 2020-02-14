@@ -7,11 +7,10 @@ But the only two modes are:
    - Value Iteration (Dynamic programming)
    - Free roaming (with keyboard-arrows)
 
+![Pic of the app](ScreenShot.png)
+
 Main dependencies:
 - tkinter
 - pandas
 - numpy
 - PIL
-
-
-![Pic of the app](ScreenShot.png)
