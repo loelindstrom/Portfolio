@@ -11,4 +11,4 @@ Main dependencies:
 - PIL
 
 
-![alt text](Screen Shot 2020-02-14 at 23.46.45.png)
+![alt text](/Portfolio/Python/GridWorld/Screen Shot 2020-02-14 at 23.46.45.png)
