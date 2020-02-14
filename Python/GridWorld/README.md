@@ -11,4 +11,4 @@ Main dependencies:
 - PIL
 
 
-![alt text](https://github.com/loelindstrom//Portfolio/Python/GridWorld/Screen Shot 2020-02-14 at 23.46.45.png)
+![Pic of the app](ScreenShot.png)
