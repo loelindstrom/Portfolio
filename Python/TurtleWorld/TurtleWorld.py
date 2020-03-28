@@ -1,66 +1,48 @@
 # Written for Python 3.7
+# By Loe Lindström
 
 import turtle
-import random
-import time
-screen = turtle.Screen()
-rootwindow = screen.getcanvas().winfo_toplevel()
-rootwindow.call('wm', 'attributes', '.', '-topmost', '1')
-rootwindow.call('wm', 'attributes', '.', '-topmost', '0')
-
-x = screen.getcanvas()
-print(x.winfo_width())
-print(x.winfo_height())
-
-height = x.winfo_height()
-width = x.winfo_width()
-
-turtlepower = []
-
-turtle.tracer(0, 0)
-
-cols = 15
-rows = 15
-
-p_height = height / rows
-p_width = width / cols
-
-p_height = (height - (height/500)) / rows
-p_width = (width - (width/500)) / cols
-
-p_height = (height - 30) / rows
-p_width = (width - 30) / cols
-
-# startpos = [-300, 300]
-startpos = [-(p_width*cols/2), p_height*rows/2]
 
 class TurtleWorld():
-    def __init__(self, rows=10, columns=10):
+    def __init__(self, rows=50, columns=50):
         # Screen initiations
         self.screen = turtle.Screen()
-        self.rootwindow = self.screen.getcanvas().winfo_toplevel()
-        self.rootwindow.call('wm', 'attributes', '.', '-topmost', '1')
-        self.rootwindow.call('wm', 'attributes', '.', '-topmost', '0')
+        # self.rootwindow = self.screen.getcanvas().winfo_toplevel()
+        # self.rootwindow.call('wm', 'attributes', '.', '-topmost', '1')
+        # self.rootwindow.call('wm', 'attributes', '.', '-topmost', '0')
+
+        # Calculating the size of the visual array in accordance to the size of the window.
+        tkinter_canvas = self.screen.getcanvas()
+        win_height = tkinter_canvas.winfo_height()
+        win_width = tkinter_canvas.winfo_width()
+        p_height = (win_height - 100) / rows
+        p_width = (win_width - 100) / columns
+        start_pos = [-(p_width * columns / 2), p_height * rows / 2]
+
+
         turtle.tracer(0, 0)
 
-
+        self.array_w_turtles = Turtle2dArray()
 
         # Paint the turtles:
         for row in range(rows):
             row_for_array = []
             for col in range(columns):
-                pt = PixelTurtle(self.screen)
-                startpos[0] += 60
-                row_for_array.append(pt)
-            startpos[0] = -300
-            startpos[1] -= 60
-            array_w_turtles.append(row_for_array)
+                pix_turt = PixelTurtle(self.screen, width=p_width, height=p_height, start_pos=start_pos)
+                pix_turt.paint_pixel()
+                start_pos[0] += p_width
+                row_for_array.append(pix_turt)
+            start_pos[0] = -(p_width * columns / 2)
+            start_pos[1] -= p_height
+            self.array_w_turtles.append(row_for_array)
+            turtle.update()
 
 
 class PixelTurtle(turtle.RawTurtle):
-    def __init__(self, parent, pixel_size, start_pos):
+    def __init__(self, parent, width, height, start_pos):
         super().__init__(parent)
-        self.pixel_size = pixel_size
+        self.p_width = width
+        self.p_height = height
         self.start_pos = start_pos
 
         # Hide and place the turtle in the right position:
@@ -69,13 +51,17 @@ class PixelTurtle(turtle.RawTurtle):
         self.goto(self.start_pos)
 
     def paint_pixel(self, fill=False):
-
         self.pd()
-        # t.begin_fill()
-        for i in range(4):
-            self.fd(60)
+        if fill:
+            self.begin_fill()
+        for _ in range(2):
+            self.fd(self.p_width)
             self.right(90)
-        # t.end_fill()
+            self.fd(self.p_height)
+            self.right(90)
+        if fill:
+            self.end_fill()
+
 
 
 class Turtle2dArray(list):
@@ -89,33 +75,7 @@ class Turtle2dArray(list):
         return self[row][column]
 
 
-array_w_turtles = Turtle2dArray()
-
-for row in range(rows):
-    row_for_array = []
-    for col in range(cols):
-        t = turtle.Turtle()
-        t.ht()
-        t.pu()
-        t.goto(startpos)
-        t.pd()
-        # t.begin_fill()
-        for i in range(2):
-            for i in range(2):
-                t.fd(p_width)
-                t.right(90)
-                t.fd(p_height)
-                t.right(90)
-        # t.end_fill()
-        startpos[0] += p_width
-        row_for_array.append(t)
-    startpos[0] = -(p_width*cols/2)
-    startpos[1] -= p_height
-    array_w_turtles.append(row_for_array)
-
-
-turtle.update()
-
+TW = TurtleWorld()
+PT = TW.array_w_turtles.get_turtle(1, 1)
+PT.paint_pixel(fill=True)
 turtle.mainloop()
-
-# time.sleep(3)

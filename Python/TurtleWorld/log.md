@@ -1,3 +1,8 @@
+<h4>28th of March</h4>
+Have kept on trying to implement my solution of a simple pixel map in turtle.  
+It has worked out so now I'm able to create this:
+![Pic of the app](screenshots/Turtle_first_draft.png | =200)
+
 
 <h4>25th of March</h4>
 <h5>Brainstorming</h5>
