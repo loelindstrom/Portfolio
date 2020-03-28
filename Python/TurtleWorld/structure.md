@@ -1,18 +1,3 @@
-
-<h4>25th of March</h4>
-<h5>Brainstorming</h5>
-Overall idea:
-84x84 pixels.
-Each shall be painted by a turtle-pointer.
-Each pixel can either be: on = black    off = white
-<br><br>
-This is a good start to try to build this. Then after that I will try to figure out how games can be implemented there.
-Maybe some sort of interactive aspect might be built in so you could "paint" the pixels and therefore create your objects. Or, when I think about it.. maybe it's enough to define several pixels as one object somehow and then give this object movement-properties somehow. Well, I'll save that for later.
-<br><br>
-
-
-What do I need then?
-
 **(TurtleWorld) A class that keeps track of everything**  
 
 Initiation:  
