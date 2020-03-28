@@ -1,7 +1,13 @@
 <h4>28th of March</h4>
 Have kept on trying to implement my solution of a simple pixel map in turtle.  
 It has worked out so now I'm able to create this:
-![Pic of the app](screenshots/Turtle_first_draft.png =200x200)
+![Pic of the app in Turtle](screenshots/Turtle_first_draft.png)  
+  
+But something I think will be a problem is that it take some time to load. The point of this project is for it to load fast. So when trying to play games in this environment I don't know if it's the right way to implement it.  
+Therefore I instead tried to implement it in tkinter, which Turtle is an extension of. This is how that turned out:
+![Pic of the app in Turtle](screenshots/tkinter_first_draf.png)
+But it almost was even slower. (Used frames as pixels). I will continue and see what happens, otherwise it might just be that python and this way of implementing it might not be so good as I hope. 
+
 
 
 <h4>25th of March</h4>
