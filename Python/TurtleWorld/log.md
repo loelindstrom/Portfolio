@@ -1,3 +1,40 @@
+<h4>2nd of April</h4>
+Today I would like to try and make a simple rain animation in the world. Imagine seeing the world as a 2D-game seen from the side. I want objects of a certain shape to fall down from the top of the screen.  
+  
+In the long run I want several of them to appear randomly. But today I think I'll start by just making one object fall down. 
+  
+I also would like to be able to save these animations as unique "games" that can be loaded and run. What do I need for this:
+- Maybe I could define separate methods outside the class. Put them in separate files, import them and run them with a class method for the class TurtleWorld or PixelWorld.  
+
+I also need to decide wether to continue on PixelWorld or TurtleWorld. In PixelWorld I already have made an animation curently of one pixel that wanders diagonally each time I click the right arrow. Maybe I'll just continue on that.   
+  
+  So, what I have there is the following structure:  
+    
+   **PixelWorld (a class)**  
+ *Init*  
+ It inherits tk.Tk() from tkinter.  
+ One head frame is created which contains a lot of small frames, you can see on the screenshot below. 
+ 
+ *Wandering (function)*  
+ This function is called when right arrow is pressed, it mswitches the background of a pixel to black and moves it diagonally.
+ 
+ **New loading class**  
+ What I need to do is to remake this wandering function. It shoud be callable with keyword args which corresponds to the particular function that is the particular "game" that is going to be shown.
+ So it should be callable like PixelWorld.load("falling_cross").
+ Yes, load is a good name.  
+   
+ **How to define falling objects**  
+ I also need to define some sort of object, e.g. a cross, and treat this as one object. So maybe a new class should be created called. I think the best is probably to just try to make a simple method within the already existing PixelWorld-class just to get an idea of how to represent an object in this world. And I'll wait with the grandiose plans of *load()*-functions etc.
+     
+ Ok, so let's get to it then!  
+ ...(coding)...
+  
+So here is the result (each time down arrow is pressed the cross goes down and each time right arrow is pressed the single pixel moves diagonally donw):
+![Pic of the app in Turtle](screenshots/Falling_Cross.png) 
+     
+   
+
+
 <h4>28th of March</h4>
 Have kept on trying to implement my solution of a simple pixel map in turtle.  
 It has worked out so now I'm able to create this:
