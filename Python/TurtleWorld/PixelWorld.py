@@ -7,6 +7,29 @@ class FrameArray(list):
     def get(self, row, column):
         return self[row][column]
 
+class PixelObject():
+    def __init__(self, pixel_coordinates):
+        self.pixel_coordinates = pixel_coordinates
+
+    def move(self, direction):
+        if direction == "up":
+            for pixel in self.pixel_coordinates:
+                pixel[0] -= 1
+
+        if direction == "down":
+            for pixel in self.pixel_coordinates:
+                pixel[0] += 1
+
+        if direction == "right":
+            for pixel in self.pixel_coordinates:
+                pixel[1] += 1
+
+        if direction == "left":
+            for pixel in self.pixel_coordinates:
+                pixel[1] -= 1
+
+        return self.pixel_coordinates
+
 class Cross():
     def __init__(self, top, left, right, bottom):
         self.top = top
@@ -38,8 +61,8 @@ class PixelWorld(tk.Tk):
         win_height = 800
         self.geometry(str(win_width) + "x" + str(win_height))
 
-        rows = 40
-        columns = 40
+        rows = 20
+        columns = 20
 
         self.row_count = 0
         self.col_count = 0
@@ -47,6 +70,7 @@ class PixelWorld(tk.Tk):
         self.frame = tk.Frame(self)
         self.frame.grid(row=0, column=0, sticky="nsew")
 
+        self.move_dict = {'w': 'up', 'a': 'left', 's': 'down', 'd': 'right'}
 
         p_height = (win_height) / rows
         p_width = (win_width) / columns
@@ -79,8 +103,17 @@ class PixelWorld(tk.Tk):
         for frame in self.cross:
             frame.configure(bg='black')
 
+        self.line = PixelObject([[0,10], [1,10], [2,10], [3,10]])
+        for coordinates in self.line.pixel_coordinates:
+            frame = self.all_frames[coordinates[0]][coordinates[1]]
+            frame.configure(bg='black')
+
+
         self.bind('<Right>', self.wandering)
         self.bind('<Down>', self.falling_cross)
+
+        for cmd in zip(['<w>', '<a>', '<s>', '<d>']):
+                self.bind(cmd, self.move)
 
     def wandering(self, event):
         self.row_count += 1
@@ -102,6 +135,16 @@ class PixelWorld(tk.Tk):
         for frame in self.cross:
             frame.configure(bg='black')
 
+    def move(self, event):
+        print(event)
+        dir = self.move_dict[event.keysym]
+        for coordinates in self.line.pixel_coordinates:
+            frame = self.all_frames[coordinates[0]][coordinates[1]]
+            frame.configure(bg='white')
+        self.line.move(dir)
+        for coordinates in self.line.pixel_coordinates:
+            frame = self.all_frames[coordinates[0]][coordinates[1]]
+            frame.configure(bg='black')
 
 PW = PixelWorld()
 # PW.wandering()
