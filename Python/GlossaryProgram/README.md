@@ -1,5 +1,7 @@
 Glossary Program
 ----
+*(Made for Python 3.6)*
+  
 This one I wrote during a course about Big Data at univeristy.  
 I had a bunch of notes from classes and wanted to rehearse the material somehow.  
 Therefore I tried to build my own flash card program.  

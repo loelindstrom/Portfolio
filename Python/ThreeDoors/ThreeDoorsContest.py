@@ -1,3 +1,6 @@
+# Made for Python 3.6
+# Author: Loe Lindström
+
 from random import *
 
 class ContestRoom():
