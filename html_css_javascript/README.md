@@ -5,13 +5,14 @@ I've been playing around some to learn the basics of html/css/javascript.
   This is two pages I've done for fun:
   
 <br>
-<h3>Samba page</h3>
+<h3>Samba page (Caixa)</h3>
 This one was actually an idea to be used for people I play samba with. A place were they can view how to play at home:
   
+  ![Pic of the DatasetView](screenshots/caixa.png)
   <br><br>
-<h3>Wanna-look-cool page</h3>
+<h3>Wanna-look-cool page (Elements)</h3>
 One of the firsts sites I did. I played around to make it look like those modern scrolling pages.  
-  
+  ![Pic of the DatasetView](screenshots/elements.png)
   
 <br>photo credits:  
 https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Fwww.yogajournal.com%2F.image%2Ft_share%2FMTQ2MTgwNzE3MzA1NDA3MDA4%2Falex-crow-handstand.jpg&f=1&nofb=1  
