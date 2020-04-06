@@ -1,0 +1,8 @@
+Business Intelligence - uses descriptive statistics
+Big Data - uses inductive/inferential statistics
+Data fusion - to complete missing pieces in a data set
+Veracity - quality/accuracy/value of data.
+Datafication - that we can store information about everything?
+Data crunching - From quora https://www.quora.com/What-is-the-meaning-of-data-crunching: “Data crunching” is an overall term to cover the analysis of data so that it becomes useful in making decisions.
+crunch numbers, (Computers) - to perform a great many numerical calculations or extensive manipulations of numerical data. to process a large amount of data.
+Brute force approach - In computer science, brute-force search or exhaustive search, also known as generate and test, is a very general problem-solving technique and algorithmic paradigm that consists of systematically enumerating all possible candidates for the solution and checking whether each candidate satisfies the problem's statement.

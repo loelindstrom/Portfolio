@@ -1,0 +1,228 @@
+*Big data
+Business Intelligence - uses descriptive statistics
+Big Data - uses inductive/inferential statistics
+Data fusion - to complete missing pieces in a data set
+Sex viktiga begrepp inom Big Data - Volume, Velocity, Variety, Veracity, Valence, Value
+
+
+
+
+*Big data 1och2
+Datafication - that we can store information about everything?
+Data crunching - From quora https://www.quora.com/What-is-the-meaning-of-data-crunching “Data crunching” is an overall term to cover the analysis of data so that it becomes useful in making decisions.
+crunch numbers, Computers. - 1.to perform a great many numerical calculations or extensive manipulations of numerical data. 2. to process a large amount of data.
+Brute force approach - In computer science, brute-force search or exhaustive search, also known as generate and test, is a very general problem-solving technique and algorithmic paradigm that consists of systematically enumerating all possible candidates for the solution and checking whether each candidate satisfies the problem's statement.
+
+
+
+
+*Özköse
+Data sources - where the inflow of data is
+Content format - Unstructured, semi-structured or structured
+Data stores - how the data is indexed
+Data staging - Where data is being cleaned and transformed before DW
+Data processing - Is data processed in batch or real-time?
+Big data can be divided in two processes - 1. Data Mgmt = acquire, (extract, clean, annotate), (integrate, aggregate, represent) 2. Analytics = Modeling, Interpretation
+Map reduce algorithm - Programming model/implementation for processing and generating big data sets. Parallel, distributed algorithm.
+
+
+
+
+*Datawarehouse
+Data warehouse - system for reporting and data analysis. Core component in Business Intelligence. Purpose is to integrate and process data before visualization.
+Data mart - a structure in data warehouse environments, used to retrieve client-facing data.
+Business Intelligence - strategy/technology for companies to analyze their business information and use in decision making. Go from raw/operational data -> useful information.
+ETL - Extract Transfer Load. An expression in DW
+OS-IL-DW-DM - Operational Systems -> Integration Layer -> Data Warehouse -> Data Marts. Other terminology: DataSources->StagingArea->DW->DM
+Dimensional appr. in DW - Data divided into facts, dimensions
+Normalized appr. in DW - Table grouped together by subject areas
+Bot-up DW-design - Design from mart to DW
+Top.down DW-design - Design from DW to mart.
+Hybrid DW-design - Design DW and mart in parallel
+Dependent data mart, Independent data mart, Hybrid data mart - OS->DM, OS->DW->DM, Combine both
+OLTP vs OLAP - OnLine Transaction Processing: Used in Db. OnLine Analytical Processing: Used in DW.
+Handling unstructured data - Unlike the structured data that can be handled repeatedly through a RDBMS, semi-structured data may call for ad hoc and one-time extraction, parsing, processing, indexing, and analytics in a scalable and dis- tributed MapReduce or Hadoop environment. (Chen)
+
+
+
+
+*Big data påverkan på beslutsfattande
+Logical/Rational process - Systematisk/sekventiell:
+Optimizing vs Satisficing approach to problem solving - Bounded rationality: vi kan inte ta i beaktning alla alternativ
+Intuitive process - inget rationellt, bara känsla
+Garbage can model - tur, begränsad tid, pragmatiskt, lathet? Härma andra
+
+DSS normative modeling - If: Then:
+DSS judgmental modeling - Kahneman, tversky
+DSS mathematical modeling - Utan värdering, bara siffror
+DSS simulation modeling - descriptive. Simulera
+DSS Brainstorming - post-its, rösta
+DSS Human expertise - experience
+
+Knowledge-driven DSS - Intelligent agents, recommender systems
+Data-drive DSS - neural networks, data mining
+Communication-driven DSS - groupware
+Model-driven DSS - Linear programming
+Document-driven DSS - text mining
+
+Svåraste inom beslutsfattande - identifiera problemet.
+
+
+
+
+
+
+*Descriptive analytics 6/9
+Descriptive analytics - Insight into the past. Data aggregation/mining. Reporting/analyzing.
+Predictive analytics - Understand the future. Statistical models/forecasting techniques. Analyzing/Predict.
+Prescriptive analytics  - Give recommendations.
+
+Two types of databases - 1. hierarchical model 2. Relational model
+
+ERD - Entity Relationship Diagram
+
+Database vs Datawarehouse - Db uppdateras live inget sparas. Dw lagrar allt.
+
+Dw-char1: subjectoriented - uppdelad per ämne
+Dw-char2: integrated - från olika källor
+Dw-char3: time variant - historisk data
+Dw-char4: non-volatile - ingen update utan spara allt
+Dw-char5: web-based - tillgänglig för vilka och hur behålla säkerhet?
+Dw-char6: Relational/multidimensional - strukturen på databasen
+Dw-char7: Client/Server - Tunn klient = sköt processerna på annan ort än användare
+Dw-char8: Real time - hur fylla på data tror jag?
+
+Relational database - fact table and dimensional tables. From one(dimension) to many(fact)
+Multidimensional database - datacubes, can be created from a relational database by aggregating
+
+Inductive learning - data sources->Acquistion->Organizing
+Deductive reasoning - Apps->Decisions->Actions
+
+Star schema - fact table = central set of facts and dimensional tables.
+
+
+
+
+*Business Intelligence Urban Ask
+Data vs information - Data=Råa siffror. Data+attribut/dimensioner=Information.
+
+Big Data exploit vs explore - Exploit=Automate,Informate Explore=Transformate
+
+Urbans huvudpoäng - Ta reda på behov/business needs/vilken skala innan man implementerar big data tekniker/insamling.
+
+Data lakes - bringing the analysis to the data sources
+
+
+
+
+
+*Analysverktyg 13/9
+roll-up - OLAP operation: Summerar och skapar “bigger picture”
+drill-down - OLAP operation: Specificerar och gräver sig ner i mer detaljer
+
+från en till många - att en “entry” (?rad?) i en dimensionstabell kan refereras till många gånger i en faktatabell.
+Aggregates - Kombinera data från olika “measurements”. Grupper av data är utbytta mot sammanfattade siffror. SQL-kommando=GROUP BY
+
+
+
+
+
+*Predictive analytics - wikipedia
+Predictive analytics1 - Encompasses a variety of statistical techniques from: data mining, predictive modeling, AI-machine learning-deep learning
+
+Predictive analytics2 - Exploit historical patterns to identify risks/oppurtunities. Captures relationships
+
+Predictive score - a score put on an entity and then used while taking a decision in relation to that entity. Like targeting an individual with a specific ad based on their “ad-score”. Another example: credit scoring.
+
+Predictive analytics vs. forecasting - Pred=more granularity. Fore=less granularity
+
+Predictive analytics process - 1. define project. 2. data collection=data mining 3.data analysis=inspect, clean, descriptive statistics 4. Inferential statistical training 5. Predictive modelling 6. deploy results from modelling 7. Model monitoring - keep an eye on how model is doing.
+
+Predictive vs Descriptive vs Decision models - Pred=Focus on relationships between a single unit and its attributes. Desc=Focus on groups and relationships btwn e.g. customers and products. Decision=Relationships between all elements of decision making. Data, decision and forecast results of similar decisions.
+
+Applications of predictive analytics - Analytical Customer Relationship Management. Child protection. Clinical Decision Support-systems. Marketing. Fraud detection. Economy. Underwriting=credit risks.
+
+Predictive analytical techniques - Regression techniques. Machine Learning techniques.
+
+
+
+
+
+*Prediktiva analysverktyg och data mining 19/9
+Database - Find/identify
+Data mining - Classification, Clustering, Association rules
+Classification - determine which class an instance belongs to based on attributes
+Clustering - grouping instances based on similarity among attributes
+Association rules - discover interesting relations between instances and create rules. Every rule has different confidence level.
+KDP - Knowledge Discovery Process. Selection. Preprocessing. Transformation. Data Mining. Interpretation/Evaluation. Potential User Applications.
+KDD - Knowledge Discovery in Databases
+
+From data to wisdom - Data->Info->Knowledge->Wisdom. Further down the arrows(->) more value and more “noise”(being part of a bigger context with many relations reaching out from it)
+
+Data mining uses following fields - Pattern recognition, statistics, AI, machine learning, databases, management sciences and information systems, mathematical modelling
+
+Data mining - Process to identify useful patterns in data in structured databases. Patterns that are: valid, novel, useful, understandable
+
+attributes - vad varje instans har för egenskaper
+instance - en entitet i datasetet
+
+information gain - hur mycket ett attribut kan förutspå beslutet
+
+Wanting to create a small decision tree or also called “pure” - Where information gain is highest.
+
+Logaritm - genväg för multiplikation via tabeller. Används för att data mining/prediktion.
+Entropi - Inom statistik: sannolikheten för att ett system ska inta ett visst tillstånd.
+
+
+
+
+
+*Prediktiva analysverktyg och data mining WEKA 20/9
+Gini index - can be used to determine the ‘purity’ of a specific class as a result of a decision.
+Data - lowest level of abstraction
+Association rule mining - No output variable. Relationships btwn variables. Unsupervised. Apriori algorithm.
+
+Apriori algorithm - Discovering if-then-rules. Liknar SVM. Raw transaction. One/two/three-item item set.
+
+Cluster analysis - natural groupings
+
+
+
+
+
+
+*Text mining and analytics 23/9
+Text mining - impose structure, then mine data. Semi-automatic.
+
+Text mining2 - Discover patterns in unstructured data.
+
+Data vs Text mining - Da=trends. Te=Hitta kopplingar(vanliga ord, intressanta ord, starka ord)
+
+NLP - Natural Language Processing
+Stop words - onödiga ord
+stemming - hitta ordstammen(lemmat) till ordet.
+Sentiment analysis - opinion mining
+
+text mining process - 1.Establish corpus 2.Create term-by-document matrix 3.Extract patterns/knowledge
+
+PN and SO-polarity - Positive/Negative Subjective/Objective
+
+
+
+
+
+
+*Prescriptive analytics 30/9
+2 types of algorithms here - Optimization algorithms. Simulation algorithms.
+
+Decision Automatization(Algoritmisering) - Software, not humans, makes decision. Often rule-based, routines, structured. Exempel - GU-kort.
+
+Automatisering gör implicit.. - ..kunskap explicit via regler.
+
+Automatisering minskar.. - ..subjektiva aspekter av beslutsfattande. Inte alltid bra.
+
+Mjuk vs. Hård kunskap - Mjuk=Intuition,Sunt förnuft. Hård=Ren fakta/Mekanistiska formler
+
+Faramarz’s process - 1.Problem initiation 2.Feasability 3.Choice 4.Action 5.Monitoring
+
+

@@ -15,4 +15,4 @@ There are two versions:
     
   <br>
   
-  ![Pic of the app in Turtle](ScreenShot.png) 
+  ![Pic of the app](ScreenShot.png) 
