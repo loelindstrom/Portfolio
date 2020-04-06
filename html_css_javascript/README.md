@@ -12,6 +12,7 @@ This one was actually an idea to be used for people I play samba with. A place w
   <br><br>
 <h3>Wanna-look-cool page (Elements)</h3>
 One of the firsts sites I did. I played around to make it look like those modern scrolling pages.  
+
   ![Pic of the DatasetView](screenshots/elements.png)
   
 <br>photo credits:  
