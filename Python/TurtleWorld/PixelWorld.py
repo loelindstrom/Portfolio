@@ -57,8 +57,8 @@ class Cross():
 class PixelWorld(tk.Tk):
     def __init__(self, *args, **kwargs):
         tk.Tk.__init__(self, *args, **kwargs)
-        win_width = 800
-        win_height = 800
+        win_width = 600
+        win_height = 600
         self.geometry(str(win_width) + "x" + str(win_height))
 
         rows = 20
