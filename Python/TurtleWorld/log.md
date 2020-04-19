@@ -1,3 +1,31 @@
+<h4>19th of April</h4>
+I've only done small changes lately and I got stuck on how to get something to fall down on the screen. It turned out it was a simple mistake that caused all the trouble.
+But now I made it possible for things to fall down from the 'sky' and at the same time you can steer another object with the wasd-keys.<br>    
+So now I would like to create a simple game scenario where things happening and you can score points that are being tracked.<br><br>
+
+So what I need is:
+- A new frame with:
+  - A label that keeps track of the score
+- A function that makes things fall down randomly from the sky and if you catch them you'll score points  
+
+Besides this I need to think on how to implement this long-term thinking.  
+I need to be able to load a specific game into the PixelWorld, so that the pixelworld always is just the frame where things can take place in.  
+Also to make it easy for an AI-agent to train in this environment I need to implement all of this structure but on a numpy-array with ones and zeros. But for now it's easier to do it in tkinter to more easy visualize what is happening. And it should be pretty straightforward to just translate the code to working with an numpyarray instead of my own class FrameArray.<br><br>
+
+I'll think I continue my bottom-up approach to come out how to implement a game-scenario and then shape up afterwards...  
+...Or maybe I'll make a simple top-down plan based on intuitions:<br><br>
+**The falling down function:**
+- Objects randomly showing up at the top of the screen
+  - Maybe
+- Some way of keeping track of where the objects are
+  - I guess a list with PixelObjects that:
+    - Get things added to it every time step
+    - The Falling-function needs to check if the object has reached the bottom of the screen or the user's collecting object
+- A time keeper making them move down
+
+Ok, let's get to it! :)
+
+
 <h4>2nd of April</h4>
 Today I would like to try and make a simple rain animation in the world. Imagine seeing the world as a 2D-game seen from the side. I want objects of a certain shape to fall down from the top of the screen.  
   

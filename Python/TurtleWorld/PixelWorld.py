@@ -7,6 +7,14 @@ class FrameArray(list):
     def get(self, row, column):
         return self[row][column]
 
+    def turnoff(self, row, column):
+        frame = self[row][column]
+        frame.configure(bg='white')
+
+    def turnon(self, row, column):
+        frame = self[row][column]
+        frame.configure(bg='black')
+
 class PixelObject():
     def __init__(self, pixel_coordinates):
         self.pixel_coordinates = pixel_coordinates
@@ -30,122 +38,95 @@ class PixelObject():
 
         return self.pixel_coordinates
 
-class Cross():
-    def __init__(self, top, left, right, bottom):
-        self.top = top
-        self.left = left
-        self.right = right
-        self.bottom = bottom
-
-    def move(self, direction):
-        if direction == "up":
-            self.top -= 1
-            self.bottom -= 1
-
-        if direction == "down":
-            self.top += 1
-            self.bottom += 1
-
-        if direction == "right":
-            self.left += 1
-            self.right += 1
-
-        if direction == "left":
-            self.left -= 1
-            self.right -= 1
 
 class PixelWorld(tk.Tk):
     def __init__(self, *args, **kwargs):
         tk.Tk.__init__(self, *args, **kwargs)
         win_width = 600
-        win_height = 600
+        win_height = 700
         self.geometry(str(win_width) + "x" + str(win_height))
 
+        # The frame keeping track of scores
+        self.score_frame = tk.Frame(self, width=win_width, height=win_height/7, bg='lightgreen')
+        self.score_frame.grid(row=0, column=0, sticky="nsew")
+        self.textVar = tk.StringVar("")
+        self.score_label = tk.Label(self.score_frame, textvariable=self.textVar)
+        self.textVar.set("Score")
+        self.score_label.pack(anchor=tk.CENTER, padx=20, pady=20, ipadx=10, ipady=10)
+
+        # The frame where the pixels are situated
+        pixelWorld_height = win_height - win_height / 7
         rows = 20
         columns = 20
-
-        self.row_count = 0
-        self.col_count = 0
-
         self.frame = tk.Frame(self)
-        self.frame.grid(row=0, column=0, sticky="nsew")
+        self.frame.grid(row=1, column=0, sticky="nsew")
 
-        self.move_dict = {'w': 'up', 'a': 'left', 's': 'down', 'd': 'right'}
-
-        p_height = (win_height) / rows
+        p_height = (pixelWorld_height) / rows
         p_width = (win_width) / columns
 
-        self.all_frames = []
+        self.all_frames = FrameArray()
         for row in range(rows):
             row_for_array = []
             for col in range(columns):
                 f = tk.Frame(self.frame, width=p_width, height=p_height, bd=1, relief='ridge')
-                # if col % 2 == 0 and row % 2 == 0:
-                #     f.configure(bg='black')
                 f.grid(row=row, column=col)
                 row_for_array.append(f)
             self.all_frames.append(row_for_array)
 
-        self.dot = self.frame.grid_slaves(self.row_count, self.col_count)[0]
-        self.dot.configure(bg='black')
+        # Objects in the PixelWorld:
+        # self.dot = PixelObject([[0,0]])
+        # self.line = PixelObject([[0,10], [1,10], [2,10], [3,10]])
+        # self.cross = PixelObject([[0,5], [1,4], [1,6], [2,5]])
+        # my_list = [self.dot, self.line, self.cross]
+        # self.renderPixelObjectList(my_list)
 
 
-        self.tR = 0
-        self.tC = 5
-        self.lR = 1
-        self.lC = 4
-        self.rR = 1
-        self.rC = 6
-        self.dR = 2
-        self.dC = 5
-
-        self.cross = [self.all_frames[self.tR][self.tC], self.all_frames[self.lR][self.lC], self.all_frames[self.rR][self.rC], self.all_frames[self.dR][self.dC]]
-        for frame in self.cross:
-            frame.configure(bg='black')
-
-        self.line = PixelObject([[0,10], [1,10], [2,10], [3,10]])
-        for coordinates in self.line.pixel_coordinates:
-            frame = self.all_frames[coordinates[0]][coordinates[1]]
-            frame.configure(bg='black')
+        self.user_basket = PixelObject([[18,8], [19,8], [19,9], [19,10], [19,11], [18,11]])
+        self.renderPixelObject(self.user_basket)
 
 
-        self.bind('<Right>', self.wandering)
-        self.bind('<Down>', self.falling_cross)
-
+        # For making the user able to move the agent:
+        self.move_dict = {'w': 'up', 'a': 'left', 's': 'down', 'd': 'right'}
         for cmd in zip(['<w>', '<a>', '<s>', '<d>']):
-                self.bind(cmd, self.move)
+                self.bind(cmd, self.userMove)
 
-    def wandering(self, event):
-        self.row_count += 1
-        self.col_count += 1
-        print(self.row_count, self.col_count)
-        self.dot.configure(bg='white')
-        self.dot = self.frame.grid_slaves(self.row_count, self.col_count)[0]
-        self.dot.configure(bg='black')
 
-    def falling_cross(self, event):
-        for frame in self.cross:
-            frame.configure(bg='white')
-        self.tR += 1
-        self.lR += 1
-        self.rR += 1
-        self.dR += 1
-        self.cross = [self.all_frames[self.tR][self.tC], self.all_frames[self.lR][self.lC],
-                      self.all_frames[self.rR][self.rC], self.all_frames[self.dR][self.dC]]
-        for frame in self.cross:
+    def renderPixelObjectList(self, POlist):
+        for PO in POlist:
+            self.renderPixelObject(PO)
+
+
+    def renderPixelObject(self, PixelObject):
+        for coordinates in PixelObject.pixel_coordinates:
+            frame = self.all_frames[coordinates[0]][coordinates[1]]
             frame.configure(bg='black')
 
-    def move(self, event):
-        print(event)
+    def move_dot(self):
+        dir = 'down'
+        for coordinates in self.dot.pixel_coordinates:
+            row, column = coordinates[0], coordinates[1]
+            self.all_frames.turnoff(row, column)
+
+        self.dot.move(dir)
+
+        for coordinates in self.dot.pixel_coordinates:
+            row, column = coordinates[0], coordinates[1]
+            self.all_frames.turnon(row, column)
+
+        self.after(2000, self.move_dot)
+
+    def userMove(self, event):
         dir = self.move_dict[event.keysym]
-        for coordinates in self.line.pixel_coordinates:
-            frame = self.all_frames[coordinates[0]][coordinates[1]]
-            frame.configure(bg='white')
-        self.line.move(dir)
-        for coordinates in self.line.pixel_coordinates:
-            frame = self.all_frames[coordinates[0]][coordinates[1]]
-            frame.configure(bg='black')
+        for coordinates in self.user_basket.pixel_coordinates:
+            row, column = coordinates[0], coordinates[1]
+            self.all_frames.turnoff(row, column)
+
+        self.user_basket.move(dir)
+
+        for coordinates in self.user_basket.pixel_coordinates:
+            row, column = coordinates[0], coordinates[1]
+            self.all_frames.turnon(row, column)
 
 PW = PixelWorld()
-# PW.wandering()
+# PW.move_dot()
 PW.mainloop()
