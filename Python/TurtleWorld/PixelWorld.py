@@ -1,4 +1,5 @@
 import tkinter as tk
+import random
 
 class FrameArray(list):
     def __init__(self):
@@ -47,6 +48,7 @@ class PixelWorld(tk.Tk):
         self.geometry(str(win_width) + "x" + str(win_height))
 
         # The frame keeping track of scores
+        self.score = 0
         self.score_frame = tk.Frame(self, width=win_width, height=win_height/7, bg='lightgreen')
         self.score_frame.grid(row=0, column=0, sticky="nsew")
         self.textVar = tk.StringVar("")
@@ -81,8 +83,25 @@ class PixelWorld(tk.Tk):
         # self.renderPixelObjectList(my_list)
 
 
-        self.user_basket = PixelObject([[18,8], [19,8], [19,9], [19,10], [19,11], [18,11]])
+        self.user_basket = PixelObject([[18,8], [19,8], [19,9], [19,10], [18,10]])
         self.renderPixelObject(self.user_basket)
+
+        possible_start_positions = list(range(0, columns, 2))
+
+        self.falling_things = []
+
+
+        for _ in range(int(columns/4)):
+            rndm = random.randint(0, len(possible_start_positions)-1)
+            column_index = possible_start_positions.pop(rndm)
+            self.falling_things.append(PixelObject([[0, column_index]]))
+
+        self.renderPixelObjectList(self.falling_things)
+
+        # for _ in range(columns / 4):
+        #     rndm = random.choice(possible_start_positions)
+        #     column_index = possible_start_positions.pop(rndm)
+        #     self.falling_things.append(PixelObject[[0, column_index]])
 
 
         # For making the user able to move the agent:
@@ -102,16 +121,25 @@ class PixelWorld(tk.Tk):
             frame.configure(bg='black')
 
     def move_dot(self):
-        dir = 'down'
-        for coordinates in self.dot.pixel_coordinates:
-            row, column = coordinates[0], coordinates[1]
-            self.all_frames.turnoff(row, column)
+        for object in self.falling_things:
+            dir = 'down'
+            for coordinates in object.pixel_coordinates:
+                row, column = coordinates[0], coordinates[1]
+                self.all_frames.turnoff(row, column)
 
-        self.dot.move(dir)
+            object.move(dir)
 
-        for coordinates in self.dot.pixel_coordinates:
-            row, column = coordinates[0], coordinates[1]
-            self.all_frames.turnon(row, column)
+            in_basket_row = self.user_basket.pixel_coordinates[2][0] - 1
+            in_basket_column = self.user_basket.pixel_coordinates[2][1]
+            in_basket = [in_basket_row, in_basket_column]
+
+            if object.pixel_coordinates[0] == in_basket:
+                self.score += 1
+                self.textVar.set(str(self.score))
+
+            for coordinates in object.pixel_coordinates:
+                row, column = coordinates[0], coordinates[1]
+                self.all_frames.turnon(row, column)
 
         self.after(2000, self.move_dot)
 
@@ -128,5 +156,5 @@ class PixelWorld(tk.Tk):
             self.all_frames.turnon(row, column)
 
 PW = PixelWorld()
-# PW.move_dot()
+PW.move_dot()
 PW.mainloop()
