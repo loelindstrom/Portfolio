@@ -58,18 +58,18 @@ class PixelWorld(tk.Tk):
 
         # The frame where the pixels are situated
         pixelWorld_height = win_height - win_height / 7
-        rows = 20
-        columns = 20
+        self.rows = 20
+        self.columns = 20
         self.frame = tk.Frame(self)
         self.frame.grid(row=1, column=0, sticky="nsew")
 
-        p_height = (pixelWorld_height) / rows
-        p_width = (win_width) / columns
+        p_height = (pixelWorld_height) / self.rows
+        p_width = (win_width) / self.columns
 
         self.all_frames = FrameArray()
-        for row in range(rows):
+        for row in range(self.rows):
             row_for_array = []
-            for col in range(columns):
+            for col in range(self.columns):
                 f = tk.Frame(self.frame, width=p_width, height=p_height, bd=1, relief='ridge')
                 f.grid(row=row, column=col)
                 row_for_array.append(f)
@@ -86,12 +86,13 @@ class PixelWorld(tk.Tk):
         self.user_basket = PixelObject([[18,8], [19,8], [19,9], [19,10], [18,10]])
         self.renderPixelObject(self.user_basket)
 
-        possible_start_positions = list(range(0, columns, 2))
+        possible_start_positions = list(range(0, self.columns, 2))
 
         self.falling_things = []
+        self.timesteps = 1
 
 
-        for _ in range(int(columns/4)):
+        for _ in range(int(self.columns/4)):
             rndm = random.randint(0, len(possible_start_positions)-1)
             column_index = possible_start_positions.pop(rndm)
             self.falling_things.append(PixelObject([[0, column_index]]))
@@ -99,8 +100,8 @@ class PixelWorld(tk.Tk):
         self.renderPixelObjectList(self.falling_things)
 
         # for _ in range(columns / 4):
-        #     rndm = random.choice(possible_start_positions)
-        #     column_index = possible_start_positions.pop(rndm)
+        #     rndm = random.choice(self.possible_start_positions)
+        #     column_index = self.possible_start_positions.pop(rndm)
         #     self.falling_things.append(PixelObject[[0, column_index]])
 
 
@@ -121,7 +122,8 @@ class PixelWorld(tk.Tk):
             frame.configure(bg='black')
 
     def move_dot(self):
-        for object in self.falling_things:
+        to_remove = []
+        for i, object in enumerate(self.falling_things):
             dir = 'down'
             for coordinates in object.pixel_coordinates:
                 row, column = coordinates[0], coordinates[1]
@@ -133,15 +135,42 @@ class PixelWorld(tk.Tk):
             in_basket_column = self.user_basket.pixel_coordinates[2][1]
             in_basket = [in_basket_row, in_basket_column]
 
+            on_basket_left = self.user_basket.pixel_coordinates[0]
+            on_basket_right = self.user_basket.pixel_coordinates[-1]
+
             if object.pixel_coordinates[0] == in_basket:
                 self.score += 1
                 self.textVar.set(str(self.score))
+                to_remove.append(i)
 
-            for coordinates in object.pixel_coordinates:
-                row, column = coordinates[0], coordinates[1]
-                self.all_frames.turnon(row, column)
+            elif object.pixel_coordinates[0] == on_basket_left or object.pixel_coordinates[0] == on_basket_right:
+                self.score -= 1
+                self.textVar.set(str(self.score))
+                to_remove.append(i)
 
-        self.after(2000, self.move_dot)
+            elif object.pixel_coordinates[0][0] == self.rows:
+                to_remove.append(i)
+                # self.falling_things.pop(i)
+
+            else:
+                for coordinates in object.pixel_coordinates:
+                    row, column = coordinates[0], coordinates[1]
+                    self.all_frames.turnon(row, column)
+        for i in to_remove[::-1]:
+            self.falling_things.pop(i)
+
+        possible_start_positions = list(range(0, self.columns, 2))
+        if self.timesteps % 3 == 0:
+            for _ in range(int(self.columns / 10)):
+                rndm = random.randint(0, len(possible_start_positions) - 1)
+                column_index = possible_start_positions.pop(rndm)
+                self.falling_things.append(PixelObject([[0, column_index]]))
+
+            self.renderPixelObjectList(self.falling_things)
+
+        self.timesteps += 1
+
+        self.after(200, self.move_dot)
 
     def userMove(self, event):
         dir = self.move_dict[event.keysym]
