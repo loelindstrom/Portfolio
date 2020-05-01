@@ -1,3 +1,14 @@
+<h4>1st of May</h4>
+Ok, so now I've made a working game. It's been bottom-up approach programming and now I think it's the time for cleaning up everything.
+  <br><br>
+  
+Making the strucure neat and clean.  
+First just finishing up some details of the game and then cleaning. That's the aim to start with for today, might well take som days as well.  
+
+(Some time later:) Ok I need to think out loud a bit to clear my plans. I somehow want to separate out the PixelWorld from the games. My plan now is therefore to only keep the PixelWorld as what its name suggests, namely as a world of empty pixels. Then when games are loaded, or rather in a file containing the game the PixelWorld-class is used to implement the game in. The PixelWorld is like a screen and then each game is in their own class and they first create a PixelWorld-object and then determines rules that applies in this particular PixelWorld.
+
+In some way I also want numpy-arrays to be connected to the PixelWorld so that these can be used to be fed to an AI. It would be neat to have the numpy-array at the core of the whole structure and when something changes in the array the grapichs in the tkinter modules follows what's happening in the numpy-array. It's simple in that way that there only needs to be 1's and 0's in the array corresponding to a pixel on or off. I need to look in how to solve that later on.  
+
 <h4>19th of April</h4>
 I've only done small changes lately and I got stuck on how to get something to fall down on the screen. It turned out it was a simple mistake that caused all the trouble.
 But now I made it possible for things to fall down from the 'sky' and at the same time you can steer another object with the wasd-keys.<br>    

@@ -3,24 +3,63 @@ import random
 
 class FrameArray(list):
     def __init__(self):
+        '''
+        A class to be used in the PixelWorld class. 
+        It's a list constructed as a 2D array containing
+        tkinter's tk.Frame()-objects.
+        The frames in the array can be accessed easy with row and column index.
+        The background of a frame can also be turned from white to black and vice versa. 
+        '''
         super().__init__()
 
     def get(self, row, column):
+        '''
+        Returns a frame from the array based on the row and column index of the frame.
+        :param row: int 
+        :param column: int
+        :return: Frame()
+        '''
         return self[row][column]
 
     def turnoff(self, row, column):
+        '''
+        Turns the bakground of a frame at a certain row and column in the array
+        from black to white.
+        :param row: int
+        :param column: int
+        :return: None
+        '''
         frame = self[row][column]
         frame.configure(bg='white')
 
     def turnon(self, row, column):
+        '''
+        Turns the bakground of a frame at a certain row and column in the array
+        from white to black.
+        :param row: 
+        :param column: 
+        :return: 
+        '''
         frame = self[row][column]
         frame.configure(bg='black')
 
 class PixelObject():
     def __init__(self, pixel_coordinates):
+        '''
+        A class for keeping track of objects in a PixelWorld().
+        A PixelObject consists of several pixels which are kept track of
+        by its pixel coordinates.
+        The PixelObject can be moved around in the PixelWorld().
+        :param pixel_coordinates: a list with coordinate pairs, each coordinate pair is in their own list. 
+        '''
         self.pixel_coordinates = pixel_coordinates
 
     def move(self, direction):
+        '''
+        Moves an PixelObject's by updating its coordinates
+        :param direction: String with direction of movement
+        :return: 
+        '''
         if direction == "up":
             for pixel in self.pixel_coordinates:
                 pixel[0] -= 1
@@ -75,13 +114,6 @@ class PixelWorld(tk.Tk):
                 row_for_array.append(f)
             self.all_frames.append(row_for_array)
 
-        # Objects in the PixelWorld:
-        # self.dot = PixelObject([[0,0]])
-        # self.line = PixelObject([[0,10], [1,10], [2,10], [3,10]])
-        # self.cross = PixelObject([[0,5], [1,4], [1,6], [2,5]])
-        # my_list = [self.dot, self.line, self.cross]
-        # self.renderPixelObjectList(my_list)
-
 
         self.user_basket = PixelObject([[18,8], [19,8], [19,9], [19,10], [18,10]])
         self.renderPixelObject(self.user_basket)
@@ -98,11 +130,6 @@ class PixelWorld(tk.Tk):
             self.falling_things.append(PixelObject([[0, column_index]]))
 
         self.renderPixelObjectList(self.falling_things)
-
-        # for _ in range(columns / 4):
-        #     rndm = random.choice(self.possible_start_positions)
-        #     column_index = self.possible_start_positions.pop(rndm)
-        #     self.falling_things.append(PixelObject[[0, column_index]])
 
 
         # For making the user able to move the agent:
