@@ -134,7 +134,7 @@ class PixelWorld(tk.Tk):
 
         # For making the user able to move the agent:
         self.move_dict = {'w': 'up', 'a': 'left', 's': 'down', 'd': 'right'}
-        for cmd in zip(['<w>', '<a>', '<s>', '<d>']):
+        for cmd in ['<w>', '<a>', '<s>', '<d>']:
                 self.bind(cmd, self.userMove)
 
 

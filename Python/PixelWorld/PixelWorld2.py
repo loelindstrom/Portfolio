@@ -114,6 +114,27 @@ class PixelWorld(tk.Tk):
                 row_for_array.append(f)
             self.all_frames.append(row_for_array)
 
+    def renderPixelObjectList(self, POlist):
+        for PO in POlist:
+            self.renderPixelObject(PO)
 
-PW = PixelWorld()
-PW.mainloop()
+
+    def renderPixelObject(self, PixelObject):
+        for coordinates in PixelObject.pixel_coordinates:
+            self.all_frames.turnon(coordinates[0], coordinates[1])
+
+    def userMove(self, event, PixelObject, move_dict):
+        dir = move_dict[event.keysym]
+        for coordinates in PixelObject.pixel_coordinates:
+            row, column = coordinates[0], coordinates[1]
+            self.all_frames.turnoff(row, column)
+
+        PixelObject.move(dir)
+
+        for coordinates in PixelObject.pixel_coordinates:
+            row, column = coordinates[0], coordinates[1]
+            self.all_frames.turnon(row, column)
+
+
+# PW = PixelWorld()
+# PW.mainloop()
