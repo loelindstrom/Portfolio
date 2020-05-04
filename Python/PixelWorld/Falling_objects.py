@@ -20,18 +20,12 @@ class Falling_Objects():
 
         self.falling_things = []
         self.timesteps = 1
+        self.score = 0
 
 
         self.PW.renderPixelObjectList(self.falling_things)
 
     def game_play(self):
-        to_remove = []
-        for i, object in enumerate(self.falling_things):
-            dir = 'down'
-            for coordinates in object.pixel_coordinates:
-                row, column = coordinates[0], coordinates[1]
-                self.all_frames.turnoff(row, column)
-
         if self.timesteps%3 == 0:
             if random.randint(1,2) == 2:
                 possible_start_positions = list(range(0, self.PW.columns, 2))
@@ -43,7 +37,32 @@ class Falling_Objects():
                 column_index = possible_start_positions.pop(rndm)
                 self.falling_things.append(PixelObject([[0, column_index]]))
 
-            self.PW.renderPixelObjectList(self.falling_things)
+        to_remove = []
+        dir = 'down'
+        for i, object in enumerate(self.falling_things):
+            for coordinates in object.pixel_coordinates:
+                row, column = coordinates[0], coordinates[1]
+                self.all_frames.turnoff(row, column)
+
+            object.move(dir)
+
+            if object.pixel_coordinates == self.user.pixel_coordinates:
+                self.score -= 1
+                self.PW.textVar.set(str(self.score))
+                to_remove.append(i)
+
+            elif object.pixel_coordinates[0][0] == self.PW.rows:
+                to_remove.append(i)
+
+
+
+
+        for i in to_remove[::-1]:
+            self.falling_things.pop(i)
+
+        self.PW.renderPixelObjectList(self.falling_things)
+
+        self.timesteps += 1
         self.PW.after(200, self.game_play)
 
 
