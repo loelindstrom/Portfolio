@@ -1,11 +1,8 @@
 import tkinter as tk
 import random
+import numpy as np
 
-columns = 20
+x = np.zeros((20,10))
+print(x)
+print(x.shape)
 
-print(int(columns/4))
-
-# print(range((columns/4)))
-
-# for _ in range(columns/4):
-#     print("f")
