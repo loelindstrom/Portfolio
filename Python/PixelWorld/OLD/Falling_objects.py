@@ -1,4 +1,4 @@
-from PixelWorld2 import PixelWorld, PixelObject
+from OLD.PixelWorld2 import PixelWorld, PixelObject
 import random
 
 class Falling_Objects():

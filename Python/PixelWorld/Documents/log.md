@@ -1,3 +1,18 @@
+<h4>21st of May</h4>
+Some time since I last wrote. Well, I've been poking around a little, but not super much. Or well, now when I read the last entry here in the log I see that I hadn't even begun creating the numpy version.  
+Now I have anyway. I've also found out there already exist an environment like the one I am building mimicking the Atari games.
+<br><br>
+Well, anyway why I came here to write is to create a to do list.
+So here it is:
+
+**TO DO:**
+------
+- Fix the graphics with a good solution
+  - Decide whether it should be possible for a user to play, and how..
+  - 
+- Remove the FrameArray-class and incorporate its methods in the PixelWorld-class
+- 
+
 <h4>1st of May</h4>
 Ok, so now I've made a working game. It's been bottom-up approach programming and now I think it's the time for cleaning up everything.
   <br><br>
@@ -69,7 +84,7 @@ I also need to decide wether to continue on PixelWorld or TurtleWorld. In PixelW
  ...(coding)...
   
 So here is the result (each time down arrow is pressed the cross goes down and each time right arrow is pressed the single pixel moves diagonally donw):
-![Pic of the app in Turtle](screenshots/Falling_Cross.png) 
+![Pic of the app in Turtle](../screenshots/Falling_Cross.png) 
      
    
 
@@ -77,11 +92,11 @@ So here is the result (each time down arrow is pressed the cross goes down and e
 <h4>28th of March</h4>
 Have kept on trying to implement my solution of a simple pixel map in turtle.  
 It has worked out so now I'm able to create this:
-![Pic of the app in Turtle](screenshots/Turtle_first_draft.png)  
+![Pic of the app in Turtle](../screenshots/Turtle_first_draft.png)  
   
 But something I think will be a problem is that it take some time to load. The point of this project is for it to load fast. So when trying to play games in this environment I don't know if it's the right way to implement it.  
 Therefore I instead tried to implement it in tkinter, which Turtle is an extension of. This is how that turned out:
-![Pic of the app in Turtle](screenshots/tkinter_first_draf.png)
+![Pic of the app in Turtle](../screenshots/tkinter_first_draf.png)
 But it almost was even slower. (Used frames as pixels). I will continue and see what happens, otherwise it might just be that python and this way of implementing it might not be so good as I hope. 
 
 
