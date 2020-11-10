@@ -6,6 +6,6 @@ It consists of:
  - a graphical interface
 
 **Screenshots:**
-![The bank app's GUI first menu](bankApp1.png =250x)
-![The bank app's GUI second menu](bankApp2.png =250x) 
-![The bank app's GUI third menu](bankApp3.png =250x)
+![The bank app's GUI first menu](/bankApp1.png =250x)
+![The bank app's GUI second menu](/bankApp2.png =250x) 
+![The bank app's GUI third menu](/bankApp3.png =250x)
