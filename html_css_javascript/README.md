@@ -6,11 +6,11 @@ I've been playing around some to learn the basics of html/css/javascript.
   <h3>SocRob</h3>
   Live link: <a href="http://www.student.ltu.se/~loelin-8/Uppgift4a_draft/index.html">SocRob page<a> 
   ![Pic of the DatasetView](screenshots/SocRob.png)
-  --
+  
   ![Pic of the DatasetView](screenshots/SocRob2.png)
-  --
+  
   ![Pic of the DatasetView](screenshots/SocRob3.png)
-  --
+  
   ![Pic of the DatasetView](screenshots/SocRob4.png)
   
 <br><br>  
