@@ -1,0 +1,485 @@
+@import url('https://fonts.googleapis.com/css2?family=Saira:wght@300;500&display=swap');
+
+
+/* -------- GENERAL -------- */
+
+/* Setting the font of the document
+and removing default margins and paddings: */
+* {
+    margin: 0;
+    padding: 0;
+    font-family: 'Saira', Arial, sans-serif;
+    font-weight: 300;
+    color: white;
+}
+
+/* Background color */
+body {
+    background-color: #232E66;
+}
+
+/* To make sure the footer will stay at the bottom */
+.container {
+    position: relative;
+}
+
+/* Removing the default link style */
+a {
+    text-decoration: none;
+    color: inherit;
+}
+
+
+/* -------- NAVBAR -------- */
+
+/* Specifying the size, color, display and font of
+the navbar */
+nav {
+    min-width: 100%;
+    min-height: 82px;
+    
+    background-color: black;
+    color: white;
+    filter: drop-shadow(0 6px 4px rgba(0, 0, 0, 0.40));
+
+    display: grid;
+    grid: auto / auto auto;
+    align-items: center;
+    justify-content: space-between;
+
+    font-size: 26px;
+}
+
+/* Style the home-button/logo */
+.home-logo {
+    margin: 0 10px;
+    padding: 8px 10px 0 10px;
+    text-decoration: none;
+    color: inherit;
+}
+
+/* Sizing the menu */
+.nav-menu {
+    width: 465px;
+}
+
+/* Removing the default bullets in the list */
+.nav-menu ul {
+    list-style-type: none;
+}
+
+/* Putting the topmost menu to the right
+creating some padding*/
+.top-menu li {
+    float: right;
+    padding: 0 30px;
+}
+
+/* Putting the downmost menu to the left
+changing font and creating some padding */
+.under-menu li {
+    font-size: 20px;
+    float: left;
+    padding: 0 15px;
+}
+
+/* Removing the default a-tag style */
+.nav-menu a {
+    display: inline-block;
+    text-align: center;
+    text-decoration: none;
+    color: inherit;
+}
+
+/* Making the menu-options bolder when cursor hovers
+on them */
+.nav-menu a:hover, .active-menu-item {
+    text-shadow: 0 0.015em #fff,0 -0.015em #fff,0.01em 0 #fff,-0.01em 0 #fff;
+}
+
+/* Making the navbar fit in smaller screen: */
+@media only screen and (max-width: 654px) {
+    nav {
+        font-size: 1.2rem;
+    }
+
+    nav .nav-menu {
+        width: auto;
+    }
+
+    nav .under-menu {
+        display: none;
+    }
+    nav img {
+        width: 32px;
+    }
+}
+
+/* Making the navbar fit in smaller screen: */
+@media only screen and (max-width: 514px) {
+    .top-menu li{
+        padding: 0 10px;
+        font-size: 0.7rem;
+    }
+}
+
+/* Making the navbar fit in smaller screen: */
+@media only screen and (max-width: 305px) {
+    .top-menu{
+        display: flex;
+        flex-direction: column;
+    }
+
+    .top-menu a {
+        padding-top: 7px;
+    }
+}
+
+/* -------- MAIN GENERAL -------- */
+main {
+    min-height: 90vh;
+    /* Leaving space for the footer: */
+    padding-bottom: 40px;
+}
+
+/* -------- MAIN index.html -------- */
+
+/* Styling the main-content into a 3x3 grid */
+.index-main {
+    display: grid;
+    grid: 1fr 2fr 1fr / 1fr 1fr 1fr;
+    grid-template-areas: "top-left ....... ............"
+                         "........ mid-mid ............"
+                         "........ ....... bot-right";
+    justify-content: space-between;
+}
+
+/* Placing the top-left header in right position
+with same margin as ".bot-right" */
+.top-left {
+    grid-area: top-left;
+    margin-left: 40px;
+    justify-self: left;
+    align-self: center;
+}
+
+/* Placing the mid image in right position */
+.mid-mid {
+    grid-area: mid-mid;
+    place-self: center;
+}
+
+/* Placing the bot-right header in right position
+with same margin as ".top-left" */
+.bot-right {
+    grid-area: bot-right;
+    align-self: center;
+    justify-self: right;
+    margin-right: 40px;
+}
+
+/* changing to flex display when screen gets to small: */
+@media only screen and (max-width: 910px) {
+    .index-main {
+        display: flex;
+        flex-flow: column nowrap;
+        justify-content: start;
+    }
+
+    .index-main img {
+        width: 30%;
+    }
+
+    .index-main * {
+        margin-top: 30px;
+    }
+
+    .top-left {
+        align-self: flex-start;
+        text-align: left;
+    }
+
+    .bot-right {
+        align-self: flex-end;
+        text-align: right;
+    }
+}
+
+/* -------- MAIN what.html -------- */
+
+/* Displaying things in columns: */
+.what-main {
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: start;
+}
+
+/* Setting the font of the Headings: */
+.what-main h1 {
+    font-size: 36px;
+}
+
+/* Styling the width and placement of the first
+text at the top of the site: */
+.what-main .first-text {
+    width: 80%;
+    text-align: center;
+}
+
+/* Create some space for the top heading on the page: */
+.what-main .first-text h1 {
+    padding: 50px 0 40px 0;
+}
+
+/* Setting the font of the text at top of page */
+.what-main .first-text p {
+    font-size: 24px;
+}
+
+/* Invisible container which holds the
+two article-thumbnails "Industry" and "Education"
+Displayed side by side via flex. */
+.articles-thumbnails-container {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    margin: 40px 0;
+}
+
+/* Styling the picture and text in the "Industry"
+and "Education" article-thumbnails */
+.article-container {
+    background-color: white;
+    border-radius: 45px;
+    max-width: 450px;
+    text-align: left;
+    margin: 50px;
+    
+}
+
+/* The heading within the article-thumbnail */
+.article-container h1 {
+    background-color: #3C4DA7;
+    border-radius: 39px;
+    padding: 10px;
+    text-align: center;
+    
+}
+
+/* Making the image in the container centered */
+.article-container img {
+    display: block;
+    margin: auto;
+    max-width: 100%; /* To make the picture shrink in smaller screens */
+}
+
+/* Defining the strong properties in
+the article */
+.article-container strong {
+    color: black;
+    font-weight: 800;
+}
+
+/* Setting the color of the text
+and creating some spacing around the text */
+.article-container p {
+    color: black;
+    padding: 10px 30px 20px 30px;
+}
+
+/* Putting the two artcle thumbnails on top of each other while scrren is this small or smaller: */
+@media only screen and (max-width: 855px) {
+    .articles-thumbnails-container {
+        flex-direction: column;
+        align-items: center;
+    }
+    /* Making the text use up the space of the screen a bit more: */
+    .what-main .first-text {
+        width: 95%;
+    }
+}
+
+/* -------- MAIN industry.html & education.html -------- */
+
+/* Creating some space above the main content */
+main.industry-education-main {
+    padding-top: 30px;
+}
+
+/* Centering and setting the width/height of the 
+article. */
+#bigArticle {
+    max-width: 800px;
+    margin: auto;
+    height: auto;
+}
+
+/* Giving the pic the same width as what the
+<p>-elemnent further down has. */
+#bigArticle img {
+    width: 660px;
+}
+
+/* -------- MAIN who.html -------- */
+
+/* Setting how the heading and the container containing the text about the staff should be displayed: in the middle */
+.who-main h1 {
+    text-align: center;
+    padding-top: 20px;
+}
+
+/* Setting how the text containers shall be displayed in the staff-container: Side-by-side, even space between and with automatic height. */
+.staff-container {
+    display: flex;
+    justify-content: space-evenly;
+    align-items: flex-start;
+}
+
+/* Setting the properties of the containers
+holding the picture and the text. */
+.who-container {
+    background-color: white;
+    max-width: 300px;
+    height: fit-content;
+    margin: 40px 0px;
+    padding: 40px;
+    border-radius: 39px;
+}
+
+/* Putting the image in the text containers
+in the middle horizontally */
+.who-container img {
+    display: block;
+    margin: auto;
+    padding-bottom: 20px;
+}
+
+/* Setting the font to black and making it bold
+in the heading and sub-heading */
+.who-container h2, .who-container strong {
+    color: black;
+    font-weight: 700;
+}
+
+/* Setting the color of the body text */
+.who-container p {
+    color: black;
+}
+
+/* Stacking the who-containers on top of each other in smaller screens */
+@media only screen and (max-width: 830px) {
+    .staff-container {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+}
+
+
+/* -------- MAIN contact.html -------- */
+
+/* Make  all divs stack in one column, center divs
+and set the width of them.*/
+.contact-main {
+    display: flex;
+    flex-direction: column;
+    margin: auto;
+    width: 80%;
+}
+
+/* Creating some margin around the first text */
+.contact-main h1 {
+    margin: 30px 0;
+}
+
+/* Setting the color of the contact info
+container and round off the edges */
+.contact-info-container {
+    background-color: #3C4DA7;
+    border-radius: 39px;
+}
+
+/* Setting some left margin for the text and the form in the colored containers. */
+.contact-info-container h1, .contact-form h1, .contact-form form {
+    margin-left: 10%;
+}
+
+/* Styling the color and edge rounding of
+the contact form, as well as creating some margin above it. */
+.contact-form {
+    background-color: black;
+    border-radius: 39px;
+    margin: 80px 0;
+    padding-bottom: 40px;
+}
+
+/* Marking the email as clickable by making it
+look bolder when hovering over it */
+.contact-form a:hover {
+    text-shadow: 0 0.015em #fff,0 -0.015em #fff,0.01em 0 #fff,-0.01em 0 #fff;
+}
+
+/* The form */
+.contact-form form {
+    font-size: 1.5em;
+    display: flex;
+    flex-direction: column;
+}
+
+
+/* Setting the width, font-size and text color of
+the input fields */
+.input-field {
+    width: 60%;
+    font-size: 0.8em;
+    color: black;
+}
+
+#submitButton {
+    color: black;
+    width: 140px;
+    margin: 20px 0;
+    font-size: 0.8em;
+}
+
+/* Making the input fields a little wider when the screen gets smaller */
+@media only screen and (max-width: 900px) {
+    .input-field {
+        width: 87%;
+    }
+}
+
+/* Making the form text smaller when the screen
+gets smaller: */
+@media only screen and (max-width: 737px) {
+    .contact-main {
+        font-size: 0.5rem;
+    }
+}
+
+/* -------- FOOTER -------- */
+
+/* Setting position at bottom of window,
+ size, color and display-options */
+footer {
+    position: absolute;
+    bottom: 0;
+
+    height: 40px;
+    width: 100%;
+
+    background-color: black;
+    
+    display: flex;
+    flex-direction: row-reverse;
+    align-items: center;
+    font-size: 15px;
+}
+
+/* Creating some space right of the footer's
+text */
+footer p {
+    padding-right: 40px;
+}
