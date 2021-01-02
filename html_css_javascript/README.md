@@ -1,8 +1,5 @@
 Web Programming
 ---
-I've been playing around some to learn the basics of html/css/javascript.  
-  
-  This is a page I did in a course:<br>
   <h3>SocRob</h3>
   Live link: <a href="http://www.student.ltu.se/~loelin-8/Uppgift4a_draft/index.html">SocRob page<a> 
   <br>
