@@ -1,7 +1,7 @@
 Web Programming
 ---
   <h3>SocRob</h3>
-  Live link: <a href="http://www.student.ltu.se/~loelin-8/Uppgift4a_draft/index.html">SocRob page<a> 
+  Live link: <a href="http://www.student.ltu.se/~loelin-8/Uppgift4a/index.html">SocRob page<a> 
   <br>
 
 ![Pic of the DatasetView](screenshots/SocRob.png)
